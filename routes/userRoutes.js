@@ -1,19 +1,25 @@
 const express = require('express');
+const morgan = require("morgan");
 const router = express.Router();
+const app = express();
 
-// User routes definitions
+// logging the requests using morgan 
+router.use(morgan('common'))
+
+// User routes
 // Register a new user
 router.post('/register', (req, res) => {
-    
-  });
+    res.json(temp)
+});
   
   // Login
   router.post('/login', (req, res) => {
-    // Implement logic to authenticate user login
-  });
-
-router.get('/profile', (req, res) => {
     res.send("Hello world");
+});
+
+// get user data using ID 
+router.get('/profile/:id', (req, res) => {
+
 });
 
 router.put('/change-password', (req, res) => {
