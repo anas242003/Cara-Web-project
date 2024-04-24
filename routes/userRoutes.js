@@ -1,7 +1,13 @@
 const express = require('express');
+const { default: mongoose } = require('mongoose');
 const morgan = require("morgan");
 const router = express.Router();
-const app = express();
+
+// connecting to the MongDB server
+const url = "mongodb+srv://anaseladly:24102754@cara-cluster.murcxyh.mongodb.net/Cara"
+mongoose.connect(url).then(() => {
+    console.log("Connected to MongoDb server")
+})
 
 // logging the requests using morgan 
 router.use(morgan('common'))
