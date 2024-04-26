@@ -1,12 +1,24 @@
 const mongoose = require("mongoose")
 
+
+
+
+
+
+
+
 const userSchema = new mongoose.Schema({
+    
     userId: {
         type: Number,
-        required: true,
         unique: true,
     },
-    
+
+    isnew : {
+        type: Boolean,
+        default: true,
+    },
+
     username: {
         type: String,
         required: true,
@@ -33,7 +45,23 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
+userSchema.pre('save', async function(next) {
+    const user = this;
+    if (!user.isnew) {
+        return next(); // If not a new user, proceed without generating an ID
+    }
+
+    try {
+        // Find the maximum userId in existing users and increment it by 1
+        const maxUserId = await User.findOne({}, {}, { sort: { 'userId': -1 } });
+
+        // If no existing users, start with 1, else increment the maximum userId
+        user.userId = maxUserId ? maxUserId.userId + 1 : 1;
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
 
 const User = mongoose.model('User', userSchema);
-
 module.exports = User;

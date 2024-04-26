@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require("morgan");
 const router = express.Router();
 const User = require("../models/User_Model")
+const asyncHandler = require("express-async-handler") 
 const mongoose = require('mongoose');
 
 // logging the requests using morgan 
@@ -9,8 +10,28 @@ router.use(morgan('common'))
 
 // User routes
 // Register a new user
-router.post('/register', (req, res) => {
-    res.json(temp)
+
+const createUser = asyncHandler(async (req, res) => {
+    const email = req.body.email;
+    const findUser = await User.findOne({ email: email });
+
+    if (!findUser) {
+        // Create new User
+        const newUser = await User.create(req.body);
+        res.json(newUser);
+    } else {
+        // User already exists
+        throw new Error("User Already Exists");
+    }
+});
+
+
+router.post('/register', async (req, res) => {
+    try {
+        await createUser(req, res);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 });
 
 // Define an asynchronous function to fetch all users
@@ -46,10 +67,10 @@ router.post('/login', (req, res) => {
 
 const { ObjectId } = require('mongodb');
 
-router.get('/profile/:username', async (req, res) => {
+router.get('/profile/:userId', async (req, res) => {
     try {
-        const username = req.params.username;
-        const user = await User.find({ username: username });
+        const userId = req.params.userId;
+        const user = await User.find({ userId: userId });
         
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
