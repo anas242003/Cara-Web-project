@@ -127,9 +127,46 @@ router.get('/profile', async (req, res) => {
 
 
 
-router.put('/change-password', (req, res) => {
-    // Implement logic to change user password
+router.put('/change-password', async (req, res) => {
+    try {
+        // Get user ID from JWT token
+        const token = req.headers.authorization.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decodedToken.userId;
+
+        // Extract old and new passwords from request body
+        const { oldPassword, newPassword } = req.body;
+
+        // Fetch user from the database based on userId
+        const user = await User.findOne({ userId });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Check if the old password provided by the user matches the password stored in the database
+        const passwordMatch = await bcrypt.compare(oldPassword, user.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ message: 'Old password is incorrect' });
+        }
+
+        // Hash the new password
+        const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update user's password in the database
+        user.password = hashedNewPassword;
+        await user.save();
+
+        res.json({ message: 'Password changed successfully' });
+    } catch (error) {
+        console.error('Error changing password:', error);
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
+
 
 router.post('/upload-profile-picture', (req, res) => {
     // Implement logic to handle profile picture upload
