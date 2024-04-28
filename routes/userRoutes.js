@@ -5,9 +5,27 @@ const User = require("../models/User_Model")
 const asyncHandler = require("express-async-handler") 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // logging the requests using morgan 
 router.use(morgan('common'))
+
+const generateToken = (userId) => {
+    return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+};
+
+
+
+const getallusers = async () => {
+    try {
+        const users = await User.find();
+        return users;
+    } catch (error) {
+        console.error('Error fetching all users:', error);
+        throw error; // Re-throw the error to be handled elsewhere
+    }
+};
+
 
 // User routes
 // Register a new user
@@ -28,6 +46,7 @@ router.post('/adduser', async (req, res) => {
         req.body.password = hashedPassword; // Replace plain password with hashed password
 
         // Create new User
+        
         const newUser = await User.create(req.body);
         res.json(newUser);
     } catch (error) {
@@ -37,15 +56,6 @@ router.post('/adduser', async (req, res) => {
 });
 
 // Define an asynchronous function to fetch all users
-const getallusers = async () => {
-    try {
-        const users = await User.find();
-        return users;
-    } catch (error) {
-        console.error('Error fetching all users:', error);
-        throw error; // Re-throw the error to be handled elsewhere
-    }
-};
 
 // Define the route handler for fetching all users
 router.get('/get-all-users', async (req, res) => {
@@ -60,8 +70,27 @@ router.get('/get-all-users', async (req, res) => {
 
 
 // Login
-router.post('/login', (req, res) => {
-    res.send("Hello world");
+router.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        
+        // Find user by email
+        const user = await User.findOne({ email });
+
+        // Check if user exists and if the password is correct
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+
+        // Generate JWT token with user's ID
+        const token = generateToken(user.userId);
+
+        // Send token in response
+        res.json({ token });
+    } catch (error) {
+        console.error('Error logging in user:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 // get user data using ID 
@@ -69,11 +98,16 @@ router.post('/login', (req, res) => {
 
 const { ObjectId } = require('mongodb');
 
-router.get('/profile/:userId', async (req, res) => {
-    try { 
-        const userId = req.params.userId;
-        const user = await User.find({ userId: userId });
-        
+router.get('/profile', async (req, res) => {
+    try {
+        // Get user ID from JWT token
+        const token = req.headers.authorization.split(' ')[1]; // Assuming JWT token is passed in the Authorization header
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const loggedInUserId = decodedToken.userId;
+
+        // Fetch user profile
+        const user = await User.findOne({ userId: loggedInUserId });
+
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -81,9 +115,13 @@ router.get('/profile/:userId', async (req, res) => {
         res.json(user);
     } catch (error) {
         console.error('Error fetching user profile:', error);
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
 
 
 
@@ -93,16 +131,32 @@ router.put('/change-password', (req, res) => {
     // Implement logic to change user password
 });
 
-router.post('/forgot-password', (req, res) => {
-    // Implement logic to handle forgot password request
-});
-
 router.post('/upload-profile-picture', (req, res) => {
     // Implement logic to handle profile picture upload
 });
 
-router.delete('/delete-account', (req, res) => {
-    // Implement logic to delete user account
+router.delete('/delete-account', async (req, res) => {
+    try {
+        // Extract user ID from JWT token
+        const token = req.headers.authorization.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decodedToken.userId;
+
+        // Find user by user ID and delete it
+        const deletedUser = await User.findOneAndDelete({ userId: userId });
+
+        if (!deletedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.json({ message: 'User deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 module.exports = router;
