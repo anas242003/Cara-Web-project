@@ -6,7 +6,7 @@ const dbConnect = () =>{
         console.log("Database Connected Successfully");
     }
     catch(error){
-        throw new Error(error);
+        throw new Error(error); 
     }
 };
 module.exports = dbConnect;

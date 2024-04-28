@@ -4,33 +4,35 @@ const router = express.Router();
 const User = require("../models/User_Model")
 const asyncHandler = require("express-async-handler") 
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 // logging the requests using morgan 
 router.use(morgan('common'))
 
 // User routes
 // Register a new user
-
-const createUser = asyncHandler(async (req, res) => {
+router.post('/adduser', async (req, res) => {
     const email = req.body.email;
-    const findUser = await User.findOne({ email: email });
 
-    if (!findUser) {
+    try {
+        // Check if user with the given email already exists
+        const findUser = await User.findOne({ email: email });
+
+        if (findUser) {
+            // User already exists, send response to the client
+            return res.status(400).json({ message: "User with this email already exists" });
+        }
+
+        // Hash the password before saving it
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        req.body.password = hashedPassword; // Replace plain password with hashed password
+
         // Create new User
         const newUser = await User.create(req.body);
         res.json(newUser);
-    } else {
-        // User already exists
-        throw new Error("User Already Exists");
-    }
-});
-
-
-router.post('/register', async (req, res) => {
-    try {
-        await createUser(req, res);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Error creating user:', error); // Log the error
+        res.status(500).json({ message: "Internal server error" }); // Send generic error response
     }
 });
 
@@ -68,7 +70,7 @@ router.post('/login', (req, res) => {
 const { ObjectId } = require('mongodb');
 
 router.get('/profile/:userId', async (req, res) => {
-    try {
+    try { 
         const userId = req.params.userId;
         const user = await User.find({ userId: userId });
         
