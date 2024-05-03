@@ -2,16 +2,24 @@ const express = require('express');
 const morgan = require("morgan");
 const router = express.Router();
 const User = require("../models/User_Model")
-const asyncHandler = require("express-async-handler") 
+const asyncHandler = require("express-async-handler")
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { authMiddleware } = require('../middleware/jwt.middleware');
+const { isAdmin, isCustomer } = require('../middleware/guard.middleware.js');
+
+
 
 // logging the requests using morgan 
 router.use(morgan('common'))
 
-const generateToken = (userId) => {
-    return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+const generateToken = (payload) => {
+    return jwt.sign(
+        payload,
+        process.env.TOKEN_SECRET,
+        { algorithm: 'HS256', expiresIn: '2h' }
+    );
 };
 
 
@@ -46,7 +54,7 @@ router.post('/adduser', async (req, res) => {
         req.body.password = hashedPassword; // Replace plain password with hashed password
 
         // Create new User
-        
+
         const newUser = await User.create(req.body);
         res.json(newUser);
     } catch (error) {
@@ -58,8 +66,11 @@ router.post('/adduser', async (req, res) => {
 // Define an asynchronous function to fetch all users
 
 // Define the route handler for fetching all users
-router.get('/get-all-users', async (req, res) => {
+router.get('/get-all-users', authMiddleware, async (req, res) => {
     try {
+        console.log(req.user.email);
+        console.log(req.user.userId);
+        console.log(req.user.role);
         const users = await getallusers(); // Call the asynchronous function
         res.json(users);
     } catch (error) {
@@ -73,7 +84,7 @@ router.get('/get-all-users', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        
+
         // Find user by email
         const user = await User.findOne({ email });
 
@@ -82,10 +93,13 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        // Generate JWT token with user's ID
-        const token = generateToken(user.userId);
+        const payload = { email: user.email, fullName: user.username, userId: user.userId, role: 'customer' };
+        const token = jwt.sign(
+            payload,
+            process.env.JWT_SECRET,
+            { algorithm: 'HS256', expiresIn: '2h' }
+        );
 
-        // Send token in response
         res.json({ token });
     } catch (error) {
         console.error('Error logging in user:', error);
@@ -111,7 +125,7 @@ router.get('/profile', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        
+
         res.json(user);
     } catch (error) {
         console.error('Error fetching user profile:', error);
