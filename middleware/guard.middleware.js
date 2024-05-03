@@ -1,5 +1,5 @@
 const isAdmin = (req, res, next) => {
-    console.log(req.payload.role)
+    console.log(req.user.role)
     if(req.user.role === 'admin'){
         next();
     } else {
@@ -9,7 +9,7 @@ const isAdmin = (req, res, next) => {
 
 
 const isCustomer = (req, res, next) => {
-    console.log(req.payload.role)
+    console.log(req.user.role)
     if (req.user.role === 'customer') {
         next();
     } else {

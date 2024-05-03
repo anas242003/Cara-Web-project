@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { authMiddleware } = require('../middleware/jwt.middleware');
-const { isAdmin, isCustomer } = require('../middleware/guard.middleware.js');
+const { isAdmin , isCustomer } = require('../middleware/guard.middleware.js');
 
 
 
@@ -66,7 +66,7 @@ router.post('/adduser', async (req, res) => {
 // Define an asynchronous function to fetch all users
 
 // Define the route handler for fetching all users
-router.get('/get-all-users', authMiddleware, async (req, res) => {
+router.get('/get-all-users', authMiddleware,isCustomer , async (req, res) => {
     try {
         console.log(req.user.email);
         console.log(req.user.userId);
