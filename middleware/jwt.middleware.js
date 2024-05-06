@@ -10,15 +10,29 @@ const authMiddleware = async (req, res, next) => {
             if (token) {
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);
                 console.log(decoded);
-               
-                const findUser = await User.findOne({ email: decoded.email });
-                 
-                 console.log(findUser);
-
-                if (!findUser) {
-                    throw new Error("User not found");
+                if (decoded.email == process.env.AdminEmail) {
+                    if (decoded.password == process.env.AdminPassword) {
+                        req.user = {
+                            role: "admin",
+                            email: process.env.AdminEmail
+                        }
+                    }
+                    else {
+                        throw new Error('Not Authorized token expired, Please Login again.');
+                    }
                 }
-                req.user = findUser;
+                else {
+                    const findUser = await User.findOne({ email: decoded.email });
+
+                    console.log(findUser);
+
+                    if (!findUser) {
+                        throw new Error("User not found");
+                    }
+                    req.user = findUser;
+
+                }
+
                 next();
             }
         } catch (error) {
@@ -42,4 +56,4 @@ function getTokenFromHeaders(req) {
     return null;
 }
 
-module.exports = { authMiddleware}
+module.exports = { authMiddleware }

@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { authMiddleware } = require('../middleware/jwt.middleware');
-const { isAdmin , isCustomer } = require('../middleware/guard.middleware.js');
+const { isAdmin, isCustomer } = require('../middleware/guard.middleware.js');
 
 
 
@@ -66,7 +66,7 @@ router.post('/adduser', async (req, res) => {
 // Define an asynchronous function to fetch all users
 
 // Define the route handler for fetching all users
-router.get('/get-all-users', authMiddleware,isCustomer , async (req, res) => {
+router.get('/get-all-users', authMiddleware, isAdmin, async (req, res) => {
     try {
         console.log(req.user.email);
         console.log(req.user.userId);
@@ -84,6 +84,16 @@ router.get('/get-all-users', authMiddleware,isCustomer , async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
+        if (email == process.env.AdminEmail && password == process.env.AdminPassword) {
+            const payload = { email: process.env.AdminEmail, password: process.env.AdminPassword, role: 'admin' };
+            const token = jwt.sign(
+                payload,
+                process.env.JWT_SECRET,
+                { algorithm: 'HS256', expiresIn: '2h' }
+            );
+            return res.json({ token: token, isAdmin: true });
+
+        }
 
         // Find user by email
         const user = await User.findOne({ email });
@@ -100,7 +110,7 @@ router.post('/login', async (req, res) => {
             { algorithm: 'HS256', expiresIn: '2h' }
         );
 
-        res.json({ token });
+        res.json({ token: token, isAdmin: false });
     } catch (error) {
         console.error('Error logging in user:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -186,7 +196,7 @@ router.post('/upload-profile-picture', (req, res) => {
     // Implement logic to handle profile picture upload
 });
 
-router.delete('/delete-account', async (req, res) => {
+router.delete('/delete-account', authMiddleware, isAdmin, async (req, res) => {
     try {
         // Extract user ID from JWT token
         const token = req.headers.authorization.split(' ')[1];
