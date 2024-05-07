@@ -196,4 +196,49 @@ router.delete('/delete-account', async (req, res) => {
     }
 });
 
+router.patch('/update-user', async (req, res) => {
+    try {
+        // Get user ID from JWT token
+        const token = req.headers.authorization.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decodedToken.userId;
+
+        // Extract password, username, and email from request body
+        const { password, newUsername, newEmail } = req.body;
+
+        // Fetch user from the database based on userId
+        const user = await User.findOne({ userId });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Check if the provided password matches the password stored in the database
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ message: 'Password is incorrect' });
+        }
+
+        // Update user's username and email with new values
+        if (newUsername) {
+            user.username = newUsername;
+        }
+        if (newEmail) {
+            user.email = newEmail;
+        }
+
+        // Save the updated user information to the database
+        await user.save();
+
+        res.json({ message: 'User information updated successfully' });
+    } catch (error) {
+        console.error('Error updating user information:', error);
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 module.exports = router;
