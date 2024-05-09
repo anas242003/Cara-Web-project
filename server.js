@@ -8,6 +8,10 @@ const { db } = require('./models/User_Model');
 const app = express();
 dbconnect();
 
+const cors = require('cors');
+app.use(cors());
+
+
 // Middleware
 app.use(express.json());
 // Mount user routes

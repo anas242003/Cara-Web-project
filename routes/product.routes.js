@@ -11,8 +11,14 @@ router.get('/products', async (req, res, next) => {
     try {
         console.log("hereeeeeeeee 111 ");
         const products = await Product.find();
-
-        res.json(products);
+        const transformedArray = products.map((item) => ({
+            id: item._id,
+            img: item.image || 'https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824', // Assuming your original object has an 'image' property
+            name: item.productName || '',
+            price: item.price || 0,
+            description: item.description
+        }));
+        res.json(transformedArray);
 
     } catch (error) {
         console.log(err);
@@ -24,7 +30,10 @@ router.get('/products', async (req, res, next) => {
 // Get product by product id 
 router.get('/products/:productId', async (req, res, next) => {
     console.log("hereeeeeeeee 222 ");
-    const { productId } = req.params;
+    let { productId } = req.params;
+    console.log(typeof productId);
+    productId = productId.toString()
+    console.log(typeof productId)
     if (!mongoose.Types.ObjectId.isValid(productId)) {
         res.status(400).json({ message: "product id is not valid" });
         return;
@@ -37,7 +46,15 @@ router.get('/products/:productId', async (req, res, next) => {
             return res.status(404).json({ message: `Product with Product ID - ${productId} is not found.` });
         }
 
-        res.status(200).json(product);
+        const transformed = {
+            id: product._id,
+            img: product.image || 'https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824', // Assuming your original object has an 'image' property
+            name: product.productName || '',
+            price: product.price || 0,
+            description: product.description
+        };
+
+        res.status(200).json(transformed);
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Failed to get the product" });
@@ -59,6 +76,14 @@ router.get('/productspage', async (req, res, next) => {
         const products = await Product.find().skip(startIndex).limit(pageSize);
         const totalProductsCount = await Product.countDocuments();
         const isLastPage = endIndex >= totalProductsCount;
+
+        const transformedArray = products.map((item) => ({
+            id: item._id,
+            img: item.image || 'https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824', // Assuming your original object has an 'image' property
+            name: item.productName || '',
+            price: item.price || 0,
+            description: item.description
+        }));
 
         res.json(products);
 
