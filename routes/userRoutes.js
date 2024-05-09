@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken');
 router.use(morgan('common'))
 
 const generateToken = (userId) => {
-    return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '24h' });
 };
 
 
@@ -44,8 +44,6 @@ router.post('/adduser', async (req, res) => {
         // Hash the password before saving it
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         req.body.password = hashedPassword; // Replace plain password with hashed password
-
-        // Create new User
         
         const newUser = await User.create(req.body);
         res.json(newUser);
@@ -55,17 +53,6 @@ router.post('/adduser', async (req, res) => {
     }
 });
 
-// Define an asynchronous function to fetch all users
-
-// Define the route handler for fetching all users
-router.get('/get-all-users', async (req, res) => {
-    try {
-        const users = await getallusers(); // Call the asynchronous function
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
 
 
 
@@ -92,8 +79,6 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
-
-// get user data using ID 
 
 
 const { ObjectId } = require('mongodb');
@@ -168,10 +153,6 @@ router.put('/change-password', async (req, res) => {
 });
 
 
-router.post('/upload-profile-picture', (req, res) => {
-    // Implement logic to handle profile picture upload
-});
-
 router.delete('/delete-account', async (req, res) => {
     try {
         // Extract user ID from JWT token
@@ -204,7 +185,7 @@ router.patch('/update-user', async (req, res) => {
         const userId = decodedToken.userId;
 
         // Extract password, username, and email from request body
-        const { password, newUsername, newEmail } = req.body;
+        const { password, username, email  } = req.body;
 
         // Fetch user from the database based on userId
         const user = await User.findOne({ userId });
@@ -219,18 +200,20 @@ router.patch('/update-user', async (req, res) => {
             return res.status(400).json({ message: 'Password is incorrect' });
         }
 
-        // Update user's username and email with new values
-        if (newUsername) {
-            user.username = newUsername;
-        }
-        if (newEmail) {
-            user.email = newEmail;
+
+        // Save the updated user information to  the database
+        console.log(userId);
+    const update =  await User.updateOne({userId:userId},{email:email,username:username});
+    console.log("the updated data ",update)
+
+        const returneduser = await User.findOne({ userId: userId });
+
+        if (!user) {
+        return res.status(404).json({ message: 'User not found' });
         }
 
-        // Save the updated user information to the database
-        await user.save();
 
-        res.json({ message: 'User information updated successfully' });
+       return  res.json({ message: 'User information updated successfully' });
     } catch (error) {
         console.error('Error updating user information:', error);
         if (error.name === 'JsonWebTokenError') {
@@ -239,6 +222,7 @@ router.patch('/update-user', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
 
 
 module.exports = router;

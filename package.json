@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "run:dev": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
