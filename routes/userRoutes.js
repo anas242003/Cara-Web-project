@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 const { authMiddleware } = require('../middleware/jwt.middleware');
 const { isAdmin, isCustomer } = require('../middleware/guard.middleware.js');
 
+const nodemailer = require('nodemailer');
 
 
 // logging the requests using morgan 
@@ -18,22 +19,9 @@ const generateToken = (payload) => {
     return jwt.sign(
         payload,
         process.env.TOKEN_SECRET,
-        { algorithm: 'HS256', expiresIn: '2h' }
+        { algorithm: 'HS256', expiresIn: '24h' }
     );
 };
-
-
-
-const getallusers = async () => {
-    try {
-        const users = await User.find();
-        return users;
-    } catch (error) {
-        console.error('Error fetching all users:', error);
-        throw error; // Re-throw the error to be handled elsewhere
-    }
-};
-
 
 // User routes
 // Register a new user
@@ -63,7 +51,6 @@ router.post('/adduser', async (req, res) => {
     }
 });
 
-// Define an asynchronous function to fetch all users
 
 // Define the route handler for fetching all users
 router.get('/get-all-users', authMiddleware, isAdmin, async (req, res) => {
@@ -117,8 +104,6 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// get user data using ID 
-
 
 const { ObjectId } = require('mongodb');
 
@@ -145,11 +130,6 @@ router.get('/profile', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
-
-
-
-
-
 
 router.put('/change-password', async (req, res) => {
     try {
@@ -192,11 +172,7 @@ router.put('/change-password', async (req, res) => {
 });
 
 
-router.post('/upload-profile-picture', (req, res) => {
-    // Implement logic to handle profile picture upload
-});
-
-router.delete('/delete-account', authMiddleware, isAdmin, async (req, res) => {
+router.delete('/delete-account', async (req, res) => {
     try {
         // Extract user ID from JWT token
         const token = req.headers.authorization.split(' ')[1];
@@ -219,5 +195,52 @@ router.delete('/delete-account', authMiddleware, isAdmin, async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+router.patch('/update-user', async (req, res) => {
+    try {
+        // Get user ID from JWT token
+        const token = req.headers.authorization.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decodedToken.userId;
+
+        // Extract password, username, and email from request body
+        const { password, username, email  } = req.body;
+
+        // Fetch user from the database based on userId
+        const user = await User.findOne({ userId });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Check if the provided password matches the password stored in the database
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ message: 'Password is incorrect' });
+        }
+
+
+        // Save the updated user information to  the database
+        console.log(userId);
+    const update =  await User.updateOne({userId:userId},{email:email,username:username});
+
+        const returneduser = await User.findOne({ userId: userId });
+
+        if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+        }
+
+
+        return  res.json({ message: 'User information updated successfully', returneduser });
+    } catch (error) {
+        console.error('Error updating user information:', error);
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: 'Invalid token' });
+        }
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 
 module.exports = router;
