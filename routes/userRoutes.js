@@ -6,6 +6,8 @@ const asyncHandler = require("express-async-handler")
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+
 
 // logging the requests using morgan 
 router.use(morgan('common'))
@@ -13,17 +15,6 @@ router.use(morgan('common'))
 const generateToken = (userId) => {
     return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '24h' });
 };
-
-const getallusers = async () => {
-    try {
-        const users = await User.find();
-        return users;
-    } catch (error) {
-        console.error('Error fetching all users:', error);
-        throw error; // Re-throw the error to be handled elsewhere
-    }
-};
-
 
 // User routes
 // Register a new user
@@ -104,11 +95,6 @@ router.get('/profile', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
-
-
-
-
-
 
 router.put('/change-password', async (req, res) => {
     try {
