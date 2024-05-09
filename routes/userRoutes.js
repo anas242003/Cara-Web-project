@@ -14,8 +14,6 @@ const generateToken = (userId) => {
     return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '24h' });
 };
 
-
-
 const getallusers = async () => {
     try {
         const users = await User.find();
