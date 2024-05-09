@@ -204,7 +204,6 @@ router.patch('/update-user', async (req, res) => {
         // Save the updated user information to  the database
         console.log(userId);
     const update =  await User.updateOne({userId:userId},{email:email,username:username});
-    console.log("the updated data ",update)
 
         const returneduser = await User.findOne({ userId: userId });
 
@@ -213,7 +212,7 @@ router.patch('/update-user', async (req, res) => {
         }
 
 
-       return  res.json({ message: 'User information updated successfully' });
+        return  res.json({ message: 'User information updated successfully', returneduser });
     } catch (error) {
         console.error('Error updating user information:', error);
         if (error.name === 'JsonWebTokenError') {
