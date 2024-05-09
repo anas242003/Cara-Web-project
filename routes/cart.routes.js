@@ -108,7 +108,16 @@ router.get('/cart/items', authMiddleware, isCustomer, async (req, res, next) => 
             };
         }));
 
-        res.json(cartItemsWithDetails);
+        const transformedArray = cartItemsWithDetails.map((item) => ({
+            id: item.productId,
+            img: item.image || 'https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824', // Assuming your original object has an 'image' property
+            name: item.productName || '',
+            price: item.price || 0,
+            quantity: item.quantity
+
+        }));
+
+        res.json(transformedArray);
     } catch (error) {
         console.error('Error retrieving cart items:', error);
         res.status(500).json({ error: 'Failed to retrieve cart items' });
