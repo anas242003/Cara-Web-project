@@ -9,21 +9,20 @@ const orderSchema = new Schema(
             required: true
         },
 
-        orderNumber: {
-            type: String,
-            require: true
-        },
+        // orderNumber: {
+        //     type: String,
+        //     require: true
+        // },
         phoneNumber: {
             type: String,
             require: true
         },
         Address: {
-            type:Schema.Types.ObjectId,
-            ref: "Address",
+            type: String,
             require: true
         },
 
-        
+
         totalAmount: {
             type: Number,
             require: true
@@ -31,27 +30,17 @@ const orderSchema = new Schema(
 
         status: {
             type: String,
-            enum: ["Order Created", 'processing', 'shipped', 'delivered'],
+            //enum: ["Order Created", 'processing', 'shipped', 'delivered'],
             default: "Order Created",
-        }, 
+        },
 
 
-        content: [{
-            productImg: {
-                type: String,
-            },
-            productId:{
+        items: [{
+            productId: {
                 type: String,
                 require: true
             },
-            productName: {
-                type: String,
-                require: true
-            },
-            price: {
-                type:Number,
-                require: true
-            },
+            
             quantity: {
                 type: Number,
                 require: true

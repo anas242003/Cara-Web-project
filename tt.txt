@@ -1,48 +1,16 @@
 [
     {
-        "id": 1,
-        "img": "img/prod/1.jpeg",
-        "name": "Shirt Sea weaves",
-        "price": 400
-       
+        
+        "productId": "66353c69216f33bebefb0878",
+        "quantity": 6
     }
 ]
 
-
-//-------------
-[
+----------
+if i have array of objects like that "[
     {
-        "_id": "66353c12216f33bebefb0873",
-        "productName": "phone 2",
-        "price": 13,
-        "description": "gamed",
-        "image": "",
-        "quantity": 15,
-        "createdAt": "2024-05-03T19:33:38.638Z",
-        "updatedAt": "2024-05-03T19:33:38.638Z",
-        "__v": 0
+        
+        "productId": "66353c69216f33bebefb0878",
+        "quantity": 6
     }
-]    
-
-if i have array has object like "[
-    {
-        "_id": "66353c12216f33bebefb0873",
-        "productName": "phone 2",
-        "price": 13,
-        "description": "gamed",
-        "image": "",
-        "quantity": 15,
-        "createdAt": "2024-05-03T19:33:38.638Z",
-        "updatedAt": "2024-05-03T19:33:38.638Z",
-        "__v": 0
-    }
-]    " that i want get array has object like that "[
-    {
-        "id": 1,
-        "img": "img/prod/1.jpeg",
-        "name": "Shirt Sea weaves",
-        "price": 400
-       
-    }
-]
-"
+]" i want to get array products that all products exit in first array

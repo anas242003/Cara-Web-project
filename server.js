@@ -24,6 +24,9 @@ app.use("/api", productRouter);
 const cartRouter = require("./routes/cart.routes");
 app.use("/api", cartRouter);
 
+const ordersRouter = require("./routes/order.routes");
+app.use("/api", ordersRouter);
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;
