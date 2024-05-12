@@ -1,0 +1,2615 @@
+{
+	"info": {
+		"_postman_id": "a2ef0303-c572-4e2f-9429-b00cb7613e8b",
+		"name": "E-Commerce API",
+		"description": "The API Documentation for E-Commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24694319"
+	},
+	"item": [
+		{
+			"name": "Products Endpoints",
+			"item": [
+				{
+					"name": "create product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTAxMzI1NywiZXhwIjoxNzE1MDIwNDU3fQ.J00dTgDb3QcypaUg-PVAQjC2H85bScHnShk_cnnGBps",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\" : \"labtop apple\" ,\r\n    \"price\" : 13000  ,\r\n    \"description\" : \"gamed appplee lfda jkdfajkh asfd \" ,\r\n    \"image\" : \"\" ,\r\n    \"quantity\" : 105\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Admin add new product"
+					},
+					"response": [
+						{
+							"name": "create product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM3MjEyMywiZXhwIjoxNzE1Mzc5MzIzfQ.xuA4dp7_WcCUEaTFXPysqaXgG1JwHwAVuS32VzTYSR4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productName\" : \"phone 2\" ,\r\n    \"price\" : 13  ,\r\n    \"description\" : \"gamed\" ,\r\n    \"image\" : \"\" ,\r\n    \"quantity\" : 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "202"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ca-B4BOb41l134+DEOnQg6tSADsaIg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 20:15:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productName\": \"phone 2\",\n    \"price\": 13,\n    \"description\": \"gamed\",\n    \"image\": \"\",\n    \"quantity\": 15,\n    \"_id\": \"663e807afbfeddb5236c0955\",\n    \"createdAt\": \"2024-05-10T20:15:54.719Z\",\n    \"updatedAt\": \"2024-05-10T20:15:54.719Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products/66353c8f216f33bebefb087b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"66353c8f216f33bebefb087b"
+							]
+						},
+						"description": "Admin remove product by product id"
+					},
+					"response": [
+						{
+							"name": "delete product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM3NDI4OSwiZXhwIjoxNzE1MzgxNDg5fQ.TuF_iqkXFueur60Eb0ee9V_Q8FhNjXB-vkqyKxOsGL0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/products/66353c12216f33bebefb0873",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"66353c12216f33bebefb0873"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-KCQHey+tjPe6eYBDTOZDH+QZTTw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 20:56:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product with 66353c12216f33bebefb0873 is removed successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\" : \"phone apple\" ,\r\n    \"price\" : 13  ,\r\n    \"description\" : \"fahhhhhhhhhhhhhhhhhhhd\" ,\r\n    \"image\" : \"\" ,\r\n    \"quantity\" : 15\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/66353c8f216f33bebefb087b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"66353c8f216f33bebefb087b"
+							]
+						},
+						"description": "Admin update product."
+					},
+					"response": [
+						{
+							"name": "Update Product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM3NDI4OSwiZXhwIjoxNzE1MzgxNDg5fQ.TuF_iqkXFueur60Eb0ee9V_Q8FhNjXB-vkqyKxOsGL0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productName\" : \"phone appleeeeeeee\" ,\r\n    \"price\" : 13  ,\r\n    \"description\" : \"fahhhhhhhhhhhhhhhhhhhd\" ,\r\n    \"image\" : \"\" ,\r\n    \"quantity\" : 15\r\n\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products/66353c12216f33bebefb0873",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"66353c12216f33bebefb0873"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e6-03Z8Ixmsh4MtltEcNJfm+LYBJmo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 20:53:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"66353c12216f33bebefb0873\",\n    \"productName\": \"phone appleeeeeeee\",\n    \"price\": 13,\n    \"description\": \"fahhhhhhhhhhhhhhhhhhhd\",\n    \"image\": \"\",\n    \"quantity\": 15,\n    \"createdAt\": \"2024-05-03T19:33:38.638Z\",\n    \"updatedAt\": \"2024-05-10T20:53:23.483Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get products with pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products?page = 1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page ",
+									"value": " 1"
+								}
+							]
+						},
+						"description": "Get products with pagination"
+					},
+					"response": [
+						{
+							"name": "get product with pagination",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/products?page = 1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page ",
+											"value": " 1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d6-liTMT4IfnQOid5OzwV772lz9X0k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 May 2024 23:30:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"66353c12216f33bebefb0873\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone 2\",\n        \"price\": 13,\n        \"description\": \"gamed\"\n    },\n    {\n        \"id\": \"66353c61216f33bebefb0876\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone apple\",\n        \"price\": 13,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"id\": \"66353c69216f33bebefb0878\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone huawi\",\n        \"price\": 13,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"id\": \"66353df499fa5e5b28694596\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone huawi\",\n        \"price\": 13,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"id\": \"663906930894b840dd564e09\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"labtop apple\",\n        \"price\": 13000,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    }\n]"
+						},
+						{
+							"name": "get product by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products/66353c12216f33bebefb0873",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"66353c12216f33bebefb0873"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dc-0HgnNLtoLx0LJENOixua+OMxuiA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 May 2024 23:28:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66353c12216f33bebefb0873\",\n    \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n    \"name\": \"phone 2\",\n    \"price\": 13,\n    \"description\": \"gamed\"\n}"
+						},
+						{
+							"name": "Get product New Format",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d6-liTMT4IfnQOid5OzwV772lz9X0k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 08 May 2024 23:33:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"66353c12216f33bebefb0873\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone 2\",\n        \"price\": 13,\n        \"description\": \"gamed\"\n    },\n    {\n        \"id\": \"66353c61216f33bebefb0876\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone apple\",\n        \"price\": 13,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"id\": \"66353c69216f33bebefb0878\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone huawi\",\n        \"price\": 13,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"id\": \"66353df499fa5e5b28694596\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone huawi\",\n        \"price\": 13,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"id\": \"663906930894b840dd564e09\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"labtop apple\",\n        \"price\": 13000,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Get products all products in database."
+					},
+					"response": [
+						{
+							"name": "Get products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c6a-NxWpOnQctrClx3JuNkuPKDujE/c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 16:29:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"664008f1f2634fe4403e2151\",\n        \"img\": \"https://i.postimg.cc/nLp4d1F1/1.jpg\",\n        \"name\": \"Mixed Shirt\",\n        \"price\": 123,\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"id\": \"66400d85f2634fe4403e216c\",\n        \"img\": \"https://i.postimg.cc/3N4myS13/2.jpg\",\n        \"name\": \"Green shirt\",\n        \"price\": 400,\n        \"description\": \"gamed \"\n    },\n    {\n        \"id\": \"66400de4f2634fe4403e2171\",\n        \"img\": \"https://i.postimg.cc/9MNyQ5Gx/3.jpg\",\n        \"name\": \"White Printed T-Shirt\",\n        \"price\": 500,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66400e73f2634fe4403e2175\",\n        \"img\": \"https://i.postimg.cc/YSR1TmjB/4.jpg\",\n        \"name\": \"Shirt\",\n        \"price\": 400,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66400e91f2634fe4403e2179\",\n        \"img\": \"https://i.postimg.cc/QtMpDxW9/5.jpg\",\n        \"name\": \"Black Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66400eb2f2634fe4403e217d\",\n        \"img\": \"https://i.postimg.cc/Hnq5bwvX/6.jpg\",\n        \"name\": \"Gray Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66400f44f2634fe4403e2197\",\n        \"img\": \"https://i.postimg.cc/YqFQMPj3/7.jpg\",\n        \"name\": \"Gray Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66401135f2634fe4403e21f0\",\n        \"img\": \"https://i.postimg.cc/JhrX34x6/11.jpg\",\n        \"name\": \"White Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"6640115cf2634fe4403e21f6\",\n        \"img\": \"https://i.postimg.cc/c12QqW1C/9.jpg\",\n        \"name\": \"Black Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66401185f2634fe4403e21fb\",\n        \"img\": \"https://i.postimg.cc/TwSWXj6F/14.jpg\",\n        \"name\": \"Gray Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"664011aaf2634fe4403e2200\",\n        \"img\": \"https://i.postimg.cc/qq36BtBR/15.jpg\",\n        \"name\": \"White Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"664011ccf2634fe4403e2203\",\n        \"img\": \"https://i.postimg.cc/qgHhNkgG/16.jpg\",\n        \"name\": \"Mixed Shirt\",\n        \"price\": 450,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"664011fcf2634fe4403e2209\",\n        \"img\": \"https://i.postimg.cc/y8X9SSm3/8.jpg\",\n        \"name\": \"White Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66401213f2634fe4403e220c\",\n        \"img\": \"https://i.postimg.cc/c12QqW1C/9.jpg\",\n        \"name\": \"Black Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"66401234f2634fe4403e220f\",\n        \"img\": \"https://i.postimg.cc/6pNn3hvN/10.jpg\",\n        \"name\": \"Caffee Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    },\n    {\n        \"id\": \"664012c0f2634fe4403e2233\",\n        \"img\": \"https://i.postimg.cc/zfxgxZPJ/12.jpg\",\n        \"name\": \"Green Printed T-Shirt\",\n        \"price\": 350,\n        \"description\": \"The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. persq. yd. fabric constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with each wear. Featuring a taped neck and shoulder, and a seamless double-needle collar, and available in a range of colors, it offers it all in the ultimate head- turning package.\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get product by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/664008f1f2634fe4403e2151",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"664008f1f2634fe4403e2151"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get product by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/products/664008f1f2634fe4403e2151",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"products",
+										"664008f1f2634fe4403e2151"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "160"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a0-4pn5qNNgXwlGrxFpmSIDXAxzw28\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 16:29:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"664008f1f2634fe4403e2151\",\n    \"img\": \"https://i.postimg.cc/nLp4d1F1/1.jpg\",\n    \"name\": \"Mixed Shirt\",\n    \"price\": 123,\n    \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n}"
+						}
+					]
+				}
+			],
+			"description": "Includes endpoints for CRUD operations for managing products."
+		},
+		{
+			"name": "User Endpoints",
+			"item": [
+				{
+					"name": "register - USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mohamedfahd@gmail.com\" , \r\n    \"password\" : \"fahd\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/adduser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"adduser"
+							]
+						},
+						"description": "Register as new user"
+					},
+					"response": [
+						{
+							"name": "register - USER",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"mohamedfahd@gmail.com\" , \r\n    \"password\" : \"fahd\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/adduser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"adduser"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "287"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11f-5fF0icuyz5Dk4d83JyxbnYfr4/0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 14:37:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"isnew\": true,\n    \"role\": \"customer\",\n    \"username\": \"fahd\",\n    \"email\": \"mohamedfahd@gmail.com\",\n    \"password\": \"$2b$10$saX1h5tjuMp1YGC7r6PAe.L1aQpYvcSiDhFqqkdbeu0Q/R.fYM2i6\",\n    \"_id\": \"6638eb24ddf8b242e8721c7e\",\n    \"createdAt\": \"2024-05-06T14:37:24.921Z\",\n    \"updatedAt\": \"2024-05-06T14:37:24.921Z\",\n    \"userId\": 12,\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "login - Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"FahdAdmin@gmail.com\" , \r\n    \"password\" : \"FahdAdmin\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						},
+						"description": "Login as Admin"
+					},
+					"response": [
+						{
+							"name": "login - Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"FahdAdmin@gmail.com\" , \r\n    \"password\" : \"FahdAdmin\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "215"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d7-zTJyNAEg4EgI26s2/NuzOdgtX24\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 16:18:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUwMTIzMDksImV4cCI6MTcxNTAxOTUwOX0.y-J0PUpvr8a_xK4n8g5SuYQBfNvoTi18W-g57RpwQMM\",\n    \"isAdmin\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "header",
+									"value": "{mdsfdsdfadsfasdfasdaf}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsInVzZXJJZCI6MTUsInVzZXJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImlhdCI6MTcxNTUzNTE1NCwiZXhwIjoxNzE1NTQyMzU0fQ.USc29TNHTV3YI6uZEd4RgrvWo4SZOKDPLMfGqP0t_UU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/admin/get-all-users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"get-all-users"
+							]
+						},
+						"description": "Admin Can Get or see all users."
+					},
+					"response": [
+						{
+							"name": "Get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsInVzZXJJZCI6MTUsInVzZXJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImlhdCI6MTcxNTUzNTE1NCwiZXhwIjoxNzE1NTQyMzU0fQ.USc29TNHTV3YI6uZEd4RgrvWo4SZOKDPLMfGqP0t_UU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/get-all-users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"get-all-users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1719"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b7-tuQUM5EBQLBIczkQjZlJbVKUJMQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:33:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"role\": \"customer\",\n        \"_id\": \"6634f97358ece72547dac898\",\n        \"isnew\": true,\n        \"username\": \"fahd\",\n        \"email\": \"fahd@gmail.com\",\n        \"password\": \"$2b$10$3PKd/3Eg3IQWehmlkEP1Senhub/YKn6GKsZAhieohtpN2MzVYHUd.\",\n        \"createdAt\": \"2024-05-03T14:49:23.161Z\",\n        \"updatedAt\": \"2024-05-03T14:49:23.161Z\",\n        \"userId\": 8,\n        \"__v\": 0\n    },\n    {\n        \"role\": \"customer\",\n        \"_id\": \"6634fb1058ece72547dac89f\",\n        \"isnew\": true,\n        \"username\": \"fahd\",\n        \"email\": \"fahd0@gmail.com\",\n        \"password\": \"$2b$10$603yfYeTwjwqwSXZXKyPpOqxASTTgJm3dt2XYGflC3rNe8K2xX1c.\",\n        \"createdAt\": \"2024-05-03T14:56:16.654Z\",\n        \"updatedAt\": \"2024-05-03T14:56:16.654Z\",\n        \"userId\": 9,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6635397a3119838b4c410374\",\n        \"isnew\": true,\n        \"role\": \"customer\",\n        \"username\": \"fahd\",\n        \"email\": \"fahd10@gmail.com\",\n        \"password\": \"$2b$10$TALBpI9WUdhVyteHRTGTbeDI1PAKA8GSEm1mvRvXKdaMeJpHP.Twy\",\n        \"createdAt\": \"2024-05-03T19:22:34.063Z\",\n        \"updatedAt\": \"2024-05-03T19:22:34.063Z\",\n        \"userId\": 10,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6638eb24ddf8b242e8721c7e\",\n        \"isnew\": true,\n        \"role\": \"customer\",\n        \"username\": \"fahd\",\n        \"email\": \"mohamedfahd@gmail.com\",\n        \"password\": \"$2b$10$saX1h5tjuMp1YGC7r6PAe.L1aQpYvcSiDhFqqkdbeu0Q/R.fYM2i6\",\n        \"createdAt\": \"2024-05-06T14:37:24.921Z\",\n        \"updatedAt\": \"2024-05-06T14:37:24.921Z\",\n        \"userId\": 12,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"663cd3b5c185865096032417\",\n        \"isnew\": true,\n        \"role\": \"customer\",\n        \"username\": \"dsaasd\",\n        \"email\": \"yassermuhamed78@gmail.com\",\n        \"password\": \"$2b$10$StbQz7u1zzdKTyr5yFMx..zgRUyuS5gLDqH67Dg4RCyL/F5jyau8m\",\n        \"createdAt\": \"2024-05-09T13:46:29.362Z\",\n        \"updatedAt\": \"2024-05-09T15:53:45.815Z\",\n        \"userId\": 14,\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"663e7a9f9d8f6692302e3c8a\",\n        \"isnew\": true,\n        \"role\": \"admin\",\n        \"username\": \"Administrator\",\n        \"email\": \"fahdadmin@gmail.com\",\n        \"password\": \"$2b$10$uPNTWWjkwJcR6ejWdhc4celnjxoj8asXHA9Pzd735/FvYjK4tDUh.\",\n        \"createdAt\": \"2024-05-10T19:50:55.623Z\",\n        \"updatedAt\": \"2024-05-10T19:50:55.623Z\",\n        \"userId\": 15,\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "login - User- Failed",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mohamedfahd@gmail.com\" , \r\n    \"password\" : \"fahd1122\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						},
+						"description": "Login as User but email or password was wrong"
+					},
+					"response": [
+						{
+							"name": "http://localhost:3000/api/users/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"mohamedfahd@gmail.com\" , \r\n    \"password\" : \"fahd1122\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-Mm37A2ls1bgL0/D8e3MSpDLbow8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 16:31:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid email or password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login - User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mohamedfahd@gmail.com\" , \r\n    \"password\" : \"fahd\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						},
+						"description": "Login as User"
+					},
+					"response": [
+						{
+							"name": "http://localhost:3000/api/users/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"mohamedfahd@gmail.com\" , \r\n    \"password\" : \"fahd\" ,\r\n    \"username\" : \"fahd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "263"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"107-nEf+a2Vt28xDMciTEnvjbRs9kgY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 16:32:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTUzMTU2NywiZXhwIjoxNzE1NTM4NzY3fQ.IrdIdgky9qJTKLRCd_deXSVHBjoxml2W9rpBYP8o5Kg\",\n    \"isAdmin\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTUzNDkzMCwiZXhwIjoxNzE1NTQyMTMwfQ._yQ3My9n5u0XpPAjMwfkWTAwCgXC3bPhZAoX2AYTvow",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						},
+						"description": "Get user profile or user info for user has been login"
+					},
+					"response": [
+						{
+							"name": "Get User Profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTUzNDkzMCwiZXhwIjoxNzE1NTQyMTMwfQ._yQ3My9n5u0XpPAjMwfkWTAwCgXC3bPhZAoX2AYTvow",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/users/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "287"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11f-ojHd7BFpth30+rxUMx+XCgMkdvE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:29:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6638eb24ddf8b242e8721c7e\",\n    \"isnew\": true,\n    \"role\": \"customer\",\n    \"username\": \"fahd\",\n    \"email\": \"mohamedfahd@gmail.com\",\n    \"password\": \"$2b$10$saX1h5tjuMp1YGC7r6PAe.L1aQpYvcSiDhFqqkdbeu0Q/R.fYM2i6\",\n    \"createdAt\": \"2024-05-06T14:37:24.921Z\",\n    \"updatedAt\": \"2024-05-06T14:37:24.921Z\",\n    \"userId\": 12,\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsInVzZXJJZCI6MTUsInVzZXJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImlhdCI6MTcxNTUzNTE1NCwiZXhwIjoxNzE1NTQyMzU0fQ.USc29TNHTV3YI6uZEd4RgrvWo4SZOKDPLMfGqP0t_UU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/admin/delete-user/3234443",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"delete-user",
+								"3234443"
+							]
+						},
+						"description": "Admin cand delete user by user id"
+					},
+					"response": [
+						{
+							"name": "Delete User",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsInVzZXJJZCI6MTUsInVzZXJuYW1lIjoiQWRtaW5pc3RyYXRvciIsImlhdCI6MTcxNTUzNTE1NCwiZXhwIjoxNzE1NTQyMzU0fQ.USc29TNHTV3YI6uZEd4RgrvWo4SZOKDPLMfGqP0t_UU",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/delete-user/3234443",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"delete-user",
+										"3234443"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-k49WPidBcBGukJGdMN9HagrTXqg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:35:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User with ID 3234443 is not found.\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Includes endpoints for CRUD operations for managing Users, User registration, login, and authentication using JWT tokens."
+		},
+		{
+			"name": "Cart Endpoints",
+			"item": [
+				{
+					"name": "add-product-to Cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTAwNjI4NywiZXhwIjoxNzE1MDEzNDg3fQ.cs5ACkj4nH0IOv1CW4MHJGuvU35EoRZfPrZQZXSIBn0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"productId\" : \"66353c61216f33bebefb0876\",\r\n      \"quantity\" :  4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/cart/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart",
+								"add"
+							]
+						},
+						"description": "User add product to his Cart."
+					},
+					"response": [
+						{
+							"name": "add-product-to Cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTIxNDA2NywiZXhwIjoxNzE1MjIxMjY3fQ.sv5mh5CI_wsjaqDC-UVq8lTBI8sqsqe0zGbH6V2adx0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"productId\" : \"66353c69216f33bebefb0878\",\r\n      \"quantity\" :  3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/cart/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cart",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e5-VYMZm+SOwXYG7XbKK8bdPd+xjQA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 15:50:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6638f987f0cc67db528a2ce4\",\n    \"userId\": 12,\n    \"items\": [\n        {\n            \"productId\": \"66353c69216f33bebefb0878\",\n            \"quantity\": 6,\n            \"_id\": \"6638fa35f0cc67db528a2cf7\"\n        }\n    ],\n    \"createdAt\": \"2024-05-06T15:38:47.686Z\",\n    \"updatedAt\": \"2024-05-06T15:38:47.686Z\",\n    \"__v\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "remove CartItem from user's cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTAwNjI4NywiZXhwIjoxNzE1MDEzNDg3fQ.cs5ACkj4nH0IOv1CW4MHJGuvU35EoRZfPrZQZXSIBn0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/cart/items/66353c12216f33bebefb0873",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart",
+								"items",
+								"66353c12216f33bebefb0873"
+							]
+						},
+						"description": "User remove product from his cart by sending product id in url as paramter."
+					},
+					"response": [
+						{
+							"name": "remove CartItem from user's cart",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTAwNjI4NywiZXhwIjoxNzE1MDEzNDg3fQ.cs5ACkj4nH0IOv1CW4MHJGuvU35EoRZfPrZQZXSIBn0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/cart/items/66353c12216f33bebefb0873",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cart",
+										"items",
+										"66353c12216f33bebefb0873"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e5-44LiEui4iQobakuBJrWxPdGp+aE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 May 2024 15:44:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6638f987f0cc67db528a2ce4\",\n    \"userId\": 12,\n    \"items\": [\n        {\n            \"productId\": \"66353c69216f33bebefb0878\",\n            \"quantity\": 3,\n            \"_id\": \"6638fa35f0cc67db528a2cf7\"\n        }\n    ],\n    \"createdAt\": \"2024-05-06T15:38:47.686Z\",\n    \"updatedAt\": \"2024-05-06T15:38:47.686Z\",\n    \"__v\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "Get-cart-items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTAwNjI4NywiZXhwIjoxNzE1MDEzNDg3fQ.cs5ACkj4nH0IOv1CW4MHJGuvU35EoRZfPrZQZXSIBn0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/cart/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart",
+								"items"
+							]
+						},
+						"description": "Get all items that exist in user cart."
+					},
+					"response": [
+						{
+							"name": "Get-cart-items- New format",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTI2NzA2NiwiZXhwIjoxNzE1Mjc0MjY2fQ.rbl8mlZx4xT-UjBw_4KRJy3Lk3-M4avrxBXCARd8L9U",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/cart/items",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cart",
+										"items"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "862"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35e-nvla0ZbCaivjrBfJpJsfXxfyo7s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 May 2024 15:04:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"66353c69216f33bebefb0878\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone huawi\",\n        \"price\": 13,\n        \"quantity\": 14\n    },\n    {\n        \"id\": \"66353c61216f33bebefb0876\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone apple\",\n        \"price\": 13,\n        \"quantity\": 6\n    },\n    {\n        \"id\": \"66353c12216f33bebefb0873\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone 2\",\n        \"price\": 13,\n        \"quantity\": 8\n    },\n    {\n        \"id\": \"66353df499fa5e5b28694596\",\n        \"img\": \"https://static.zara.net/assets/public/021c/20d6/25814622a083/64986afc4fe8/04408474250-p/04408474250-p.jpg?ts=1706111329442&w=824\",\n        \"name\": \"phone huawi\",\n        \"price\": 13,\n        \"quantity\": 3\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GET Total-Amount",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTUyNTY0MiwiZXhwIjoxNzE1NTMyODQyfQ.L8A9BAqQo6ZTwj91fLbr1kBVkLrIyb2WdtwaxEuDwvQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/cart/totalAmount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cart",
+								"totalAmount"
+							]
+						},
+						"description": "GET Total amount or Total price for all items that exist in user cart."
+					},
+					"response": [
+						{
+							"name": "GET Total-Amount",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTUyNTY0MiwiZXhwIjoxNzE1NTMyODQyfQ.L8A9BAqQo6ZTwj91fLbr1kBVkLrIyb2WdtwaxEuDwvQ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/cart/totalAmount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cart",
+										"totalAmount"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14-B57gTg4C4neIm/rJ6k9LX9gwKck\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 14:58:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"totalAmount\": 1569\n}"
+						}
+					]
+				}
+			],
+			"description": "Includes endpoints for CRUD operations for managing User Cart."
+		},
+		{
+			"name": "Orders Endpoints",
+			"item": [
+				{
+					"name": "Make - Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTM3MjU3NywiZXhwIjoxNzE1Mzc5Nzc3fQ.vV43wK6U7f_GXz2U99slaP5y5vBK_8hNYWEa9VagSm0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"phoneNumber\" : \"660876\",\r\n      \"Address\" :  \"egy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"create"
+							]
+						},
+						"description": "User make order, order will be all items that exist in his cart."
+					},
+					"response": [
+						{
+							"name": "Make - Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTM3MjU3NywiZXhwIjoxNzE1Mzc5Nzc3fQ.vV43wK6U7f_GXz2U99slaP5y5vBK_8hNYWEa9VagSm0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"phoneNumber\" : \"660876\",\r\n      \"Address\" :  \"egy\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/orders/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "573"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23d-QgM52zGAjY4Im++Py32/z3heBWQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 20:45:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": 12,\n    \"phoneNumber\": \"660876\",\n    \"Address\": \"egy\",\n    \"totalAmount\": 403,\n    \"status\": \"Order Created\",\n    \"items\": [\n        {\n            \"productId\": \"66353c69216f33bebefb0878\",\n            \"quantity\": 14,\n            \"_id\": \"663e875cd6cd99ff45eadaeb\"\n        },\n        {\n            \"productId\": \"66353c61216f33bebefb0876\",\n            \"quantity\": 6,\n            \"_id\": \"663e875cd6cd99ff45eadaec\"\n        },\n        {\n            \"productId\": \"66353c12216f33bebefb0873\",\n            \"quantity\": 8,\n            \"_id\": \"663e875cd6cd99ff45eadaed\"\n        },\n        {\n            \"productId\": \"66353df499fa5e5b28694596\",\n            \"quantity\": 3,\n            \"_id\": \"663e875cd6cd99ff45eadaee\"\n        }\n    ],\n    \"_id\": \"663e875cd6cd99ff45eadaea\",\n    \"createdAt\": \"2024-05-10T20:45:16.197Z\",\n    \"updatedAt\": \"2024-05-10T20:45:16.197Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get my Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTM3MjU3NywiZXhwIjoxNzE1Mzc5Nzc3fQ.vV43wK6U7f_GXz2U99slaP5y5vBK_8hNYWEa9VagSm0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/orders/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"create"
+							]
+						},
+						"description": "User get all orders have been made by him."
+					},
+					"response": [
+						{
+							"name": "Get my Orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTM3MjU3NywiZXhwIjoxNzE1Mzc5Nzc3fQ.vV43wK6U7f_GXz2U99slaP5y5vBK_8hNYWEa9VagSm0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "122"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7a-T2HkEw6SS3YUIhkFw4J1Sd1hV3Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 21:56:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"OrderId\": \"663e875cd6cd99ff45eadaea\",\n        \"phoneNumber\": \"660876\",\n        \"Address\": \"egy\",\n        \"totalAmount\": 403,\n        \"status\": \"Order Created\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get order Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTM3MjU3NywiZXhwIjoxNzE1Mzc5Nzc3fQ.vV43wK6U7f_GXz2U99slaP5y5vBK_8hNYWEa9VagSm0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/orders-details/663e875cd6cd99ff45eadaea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders-details",
+								"663e875cd6cd99ff45eadaea"
+							]
+						},
+						"description": "User gets details or items that exist in a specific order that has been made by him.  \nby sending order id in URL as parameter."
+					},
+					"response": [
+						{
+							"name": "User: Get order Items",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtZWRmYWhkQGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiZmFoZCIsInVzZXJJZCI6MTIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTcxNTM3MjU3NywiZXhwIjoxNzE1Mzc5Nzc3fQ.vV43wK6U7f_GXz2U99slaP5y5vBK_8hNYWEa9VagSm0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/orders-details/663e875cd6cd99ff45eadaea",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders-details",
+										"663e875cd6cd99ff45eadaea"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "464"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d0-011P0VI45Mg2b8KhU7Etn2KNO4o\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 22:20:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"productId\": \"663e875cd6cd99ff45eadaeb\",\n        \"price\": 13,\n        \"quantity\": 14,\n        \"productName\": \"phone huawi\",\n        \"image\": \"\",\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"productId\": \"663e875cd6cd99ff45eadaec\",\n        \"price\": 13,\n        \"quantity\": 6,\n        \"productName\": \"phone apple\",\n        \"image\": \"\",\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"productId\": \"663e875cd6cd99ff45eadaee\",\n        \"price\": 13,\n        \"quantity\": 3,\n        \"productName\": \"phone huawi\",\n        \"image\": \"\",\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Admin: Update Status Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\" : \"shipped\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders-admin/663e875cd6cd99ff45eadaea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders-admin",
+								"663e875cd6cd99ff45eadaea"
+							]
+						},
+						"description": "Admin Update the Status of Order by sending order id in URL as parameter."
+					},
+					"response": [
+						{
+							"name": "Admin: Update Status Order",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\" : \"shipped\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/orders-admin/663e875cd6cd99ff45eadaea",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders-admin",
+										"663e875cd6cd99ff45eadaea"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "567"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"237-Q1ddEKKi3gJ7UGhOtGZpqA9Itzg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 22:47:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"663e875cd6cd99ff45eadaea\",\n    \"userId\": 12,\n    \"phoneNumber\": \"660876\",\n    \"Address\": \"egy\",\n    \"totalAmount\": 403,\n    \"status\": \"shipped\",\n    \"items\": [\n        {\n            \"productId\": \"66353c69216f33bebefb0878\",\n            \"quantity\": 14,\n            \"_id\": \"663e875cd6cd99ff45eadaeb\"\n        },\n        {\n            \"productId\": \"66353c61216f33bebefb0876\",\n            \"quantity\": 6,\n            \"_id\": \"663e875cd6cd99ff45eadaec\"\n        },\n        {\n            \"productId\": \"66353c12216f33bebefb0873\",\n            \"quantity\": 8,\n            \"_id\": \"663e875cd6cd99ff45eadaed\"\n        },\n        {\n            \"productId\": \"66353df499fa5e5b28694596\",\n            \"quantity\": 3,\n            \"_id\": \"663e875cd6cd99ff45eadaee\"\n        }\n    ],\n    \"createdAt\": \"2024-05-10T20:45:16.197Z\",\n    \"updatedAt\": \"2024-05-10T22:47:56.685Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Admin: Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/orders-admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders-admin"
+							]
+						},
+						"description": "Admin get all orders."
+					},
+					"response": [
+						{
+							"name": "Admin: Get All Orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/orders-admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders-admin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "116"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"74-18vElbX8Gb505OTQZ2zQvXlBiHs\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 22:54:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"OrderId\": \"663e875cd6cd99ff45eadaea\",\n        \"phoneNumber\": \"660876\",\n        \"Address\": \"egy\",\n        \"totalAmount\": 403,\n        \"status\": \"shipped\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Admin: Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/orders-admin/663e875cd6cd99ff45eadaea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders-admin",
+								"663e875cd6cd99ff45eadaea"
+							]
+						},
+						"description": "Admin Delete Order by sending order id in URL as parameter."
+					},
+					"response": [
+						{
+							"name": "Admin: Delete Order",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/orders-admin/663e875cd6cd99ff45eadaea",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders-admin",
+										"663e875cd6cd99ff45eadaea"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-htZISI0ESqNSAnZny8tEVe/B5Yo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 22:57:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order with Order ID - 663e875cd6cd99ff45eadaea is not found.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Admin: Get order items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/orders-details-admin/663e875cd6cd99ff45eadaea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders-details-admin",
+								"663e875cd6cd99ff45eadaea"
+							]
+						},
+						"description": "Admin gets details or items that exist in a specific orde by sending order id in URL as parameter."
+					},
+					"response": [
+						{
+							"name": "Admin: Get order items",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkZhaGRBZG1pbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkZhaGRBZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTM4MTE1MSwiZXhwIjoxNzE1Mzg4MzUxfQ.e7nPusvcp3MjixyuTV8s83HyKZruL5-5D26Q_y-D2tY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\" : \"shipped\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/orders-details-admin/663e875cd6cd99ff45eadaea",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orders-details-admin",
+										"663e875cd6cd99ff45eadaea"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "464"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d0-011P0VI45Mg2b8KhU7Etn2KNO4o\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 10 May 2024 22:49:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"productId\": \"663e875cd6cd99ff45eadaeb\",\n        \"price\": 13,\n        \"quantity\": 14,\n        \"productName\": \"phone huawi\",\n        \"image\": \"\",\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"productId\": \"663e875cd6cd99ff45eadaec\",\n        \"price\": 13,\n        \"quantity\": 6,\n        \"productName\": \"phone apple\",\n        \"image\": \"\",\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    },\n    {\n        \"productId\": \"663e875cd6cd99ff45eadaee\",\n        \"price\": 13,\n        \"quantity\": 3,\n        \"productName\": \"phone huawi\",\n        \"image\": \"\",\n        \"description\": \"gamed appplee lfda jkdfajkh asfd \"\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "Includes endpoints for CRUD operations for managing Orders."
+		}
+	]
+}
