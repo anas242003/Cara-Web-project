@@ -1,7 +1,7 @@
 
-# E-Commerce Website with Node.js, Express, and Mongoose
+# E-Commerce Api.
 
-This is an e-commerce website built using Node.js, Express, and Mongoose. It provides functionality for managing Ecommerce website.
+This is an e-commerce Backend API built using Node.js, Express, and Mongoose. It provides functionality for managing Ecommerce website.
 
 ## Technologies Used
 
