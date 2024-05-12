@@ -123,4 +123,41 @@ router.get('/cart/items', authMiddleware, isCustomer, async (req, res, next) => 
         res.status(500).json({ error: 'Failed to retrieve cart items' });
     }
 });
+//--
+
+router.get('/cart/totalAmount', authMiddleware, isCustomer, async (req, res, next) => {
+    try {
+        const userId = req.user.userId;
+
+        // Validate request parameters
+        if (!userId) {
+            return res.status(400).json({ error: 'User ID is required' });
+        }
+
+        // Find the user's cart
+        const cart = await Cart.findOne({ userId });
+
+        if (!cart) {
+            return res.status(404).json({ error: 'Cart not found for this user' });
+        }
+
+        // Fetch product details for each item in the cart
+        const cartItemsWithDetails = await Promise.all(cart.items.map(async (item) => {
+            const product = await Product.findById(item.productId);
+            return {
+                price: product.price,
+                quantity: item.quantity
+            };
+        }));
+        let totalAmount = 0;
+        cartItemsWithDetails.forEach(element => {
+            totalAmount += (element.price * element.quantity);
+        });
+
+        res.json({ totalAmount: totalAmount });
+    } catch (error) {
+        console.error('Error retrieving cart items:', error);
+        res.status(500).json({ error: 'Failed to retrieve cart items' });
+    }
+});
 module.exports = router;
