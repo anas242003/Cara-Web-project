@@ -71,7 +71,7 @@ router.post('/orders/create', authMiddleware, isCustomer, async (req, res, next)
 });
 
 // GET endpoint to fetch all orders of a user
-router.get('/orders/:userId', authMiddleware, isCustomer, async (req, res, next) => {
+router.get('/orders', authMiddleware, isCustomer, async (req, res, next) => {
     try {
         const userId = req.user.userId;
 
