@@ -52,18 +52,6 @@ router.post('/adduser', async (req, res) => {
 });
 
 
-// Define the route handler for fetching all users
-router.get('/get-all-users', authMiddleware, isAdmin, async (req, res) => {
-    try {
-        console.log(req.user.email);
-        console.log(req.user.userId);
-        console.log(req.user.role);
-        const users = await getallusers(); // Call the asynchronous function
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
 
 
 
@@ -72,7 +60,7 @@ router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
         if (email == process.env.AdminEmail && password == process.env.AdminPassword) {
-            const payload = { email: process.env.AdminEmail, password: process.env.AdminPassword, role: 'admin',userId:15, username:'Administrator' };
+            const payload = { email: process.env.AdminEmail, password: process.env.AdminPassword, role: 'admin', userId: 15, username: 'Administrator' };
             const token = jwt.sign(
                 payload,
                 process.env.JWT_SECRET,
@@ -107,15 +95,18 @@ router.post('/login', async (req, res) => {
 
 const { ObjectId } = require('mongodb');
 
-router.get('/profile', async (req, res) => {
+router.get('/profile', authMiddleware, isCustomer, async (req, res, next) => {
     try {
-        // Get user ID from JWT token
-        const token = req.headers.authorization.split(' ')[1]; // Assuming JWT token is passed in the Authorization header
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-        const loggedInUserId = decodedToken.userId;
+        const userId = req.user.userId;
+
+        // Validate request parameters
+        if (!userId) {
+            return res.status(400).json({ error: 'User ID is required' });
+        }
+
 
         // Fetch user profile
-        const user = await User.findOne({ userId: loggedInUserId });
+        const user = await User.findOne({ userId });
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -124,9 +115,6 @@ router.get('/profile', async (req, res) => {
         res.json(user);
     } catch (error) {
         console.error('Error fetching user profile:', error);
-        if (error.name === 'JsonWebTokenError') {
-            return res.status(401).json({ message: 'Invalid token' });
-        }
         res.status(500).json({ message: 'Internal server error' });
     }
 });
@@ -182,7 +170,7 @@ router.patch('/update-user', async (req, res) => {
         const userId = decodedToken.userId;
 
         // Extract password, username, and email from request body
-        const { password, username, email  } = req.body;
+        const { password, username, email } = req.body;
 
         // Fetch user from the database based on userId
         const user = await User.findOne({ userId });
@@ -200,16 +188,16 @@ router.patch('/update-user', async (req, res) => {
 
         // Save the updated user information to  the database
         console.log(userId);
-    const update =  await User.updateOne({userId:userId},{email:email,username:username});
+        const update = await User.updateOne({ userId: userId }, { email: email, username: username });
 
         const returneduser = await User.findOne({ userId: userId });
 
         if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: 'User not found' });
         }
 
 
-        return  res.json({ message: 'User information updated successfully', returneduser });
+        return res.json({ message: 'User information updated successfully', returneduser });
     } catch (error) {
         console.error('Error updating user information:', error);
         if (error.name === 'JsonWebTokenError') {

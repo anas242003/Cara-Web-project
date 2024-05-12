@@ -28,7 +28,7 @@ const ordersRouter = require("./routes/order.routes");
 app.use("/api", ordersRouter);
 
 
-const adminRouter = require("./routes/admin.Routes");
+const adminRouter = require("./routes/admin.routes");
 app.use("/api/admin", adminRouter);
 
 // Start the server

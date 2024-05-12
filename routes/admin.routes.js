@@ -23,47 +23,21 @@ const getallusers = async () => {
 };
 
 // Define the route handler for fetching all users
-router.get('/get-all-users', async (req, res) => {
+router.get('/get-all-users', authMiddleware, isAdmin, async (req, res , next) => {
     try {
-        // Get the JWT token from the Authorization header
-        const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-        const loggedInUserRole = decodedToken.role;
-
-        // Check if the user's role is 'admin'
-        if (loggedInUserRole !== 'admin') {
-            // If the user is not an admin, return a 403 Forbidden status code
-            return res.status(403).json({ message: 'Not authorized' });
-        }
-
-        // If the user is an admin, fetch all users
-        const users = await getallusers();
-
-        // Return the list of users
+        console.log(req.user.email);
+        console.log(req.user.userId);
+        console.log(req.user.role);
+        const users = await getallusers(); // Call the asynchronous function
         res.json(users);
     } catch (error) {
-        // Handle any errors
-        console.error('Error fetching all users:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
 
-router.delete('/delete-user/:userId', async (req, res) => {
-    // Extract userId from the request parameters
-    const { userId } = req.params;
-
-    // Get the JWT token from the Authorization header
-    const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    const loggedInUserRole = decodedToken.role;
-
-    // Check if the user's role is 'admin'
-    if (loggedInUserRole !== 'admin') {
-        // If the user is not an admin, return a 403 Forbidden status code
-        return res.status(403).json({ message: 'Not authorized' });
-    }
-
+router.delete('/delete-user/:userId',authMiddleware, isAdmin, async (req, res,next) => {
     try {
+        const { userId } = req.params;
         const deletedUser = await User.findOneAndDelete({ userId }); // Using userId as the search criteria
         if (!deletedUser) {
             return res.status(404).json({ message: `User with ID ${userId} is not found.` });
