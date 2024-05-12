@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
         if (email == process.env.AdminEmail && password == process.env.AdminPassword) {
-            const payload = { email: process.env.AdminEmail, password: process.env.AdminPassword, role: 'admin' };
+            const payload = { email: process.env.AdminEmail, password: process.env.AdminPassword, role: 'admin',userId:15, username:'Administrator' };
             const token = jwt.sign(
                 payload,
                 process.env.JWT_SECRET,
@@ -172,29 +172,7 @@ router.put('/change-password', async (req, res) => {
 });
 
 
-router.delete('/delete-account', async (req, res) => {
-    try {
-        // Extract user ID from JWT token
-        const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-        const userId = decodedToken.userId;
 
-        // Find user by user ID and delete it
-        const deletedUser = await User.findOneAndDelete({ userId: userId });
-
-        if (!deletedUser) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        res.json({ message: 'User deleted successfully' });
-    } catch (error) {
-        console.error('Error deleting user:', error);
-        if (error.name === 'JsonWebTokenError') {
-            return res.status(401).json({ message: 'Invalid token' });
-        }
-        res.status(500).json({ message: 'Internal server error' });
-    }
-});
 
 router.patch('/update-user', async (req, res) => {
     try {
